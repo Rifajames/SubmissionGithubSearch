@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SubmissionGithubSearch</string>
+    <string name="searchbar_hint">Masukkan kata</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_1">Followers</string>
+    <string name="tab_text_2">Following</string>
+</resources>
