@@ -11,28 +11,28 @@ import retrofit2.http.Query
 
 interface GithubApiService {
     @GET("search/users")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token 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")
     fun getUser(
         @Query("q")
         query: String
     ): Call<ResponseGithub>
 
     @GET("users/{username}")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token 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")
     fun getGithubDetail(
         @Path("username")
         username: String
     ): Call<DetailResponse>
 
     @GET("users/{username}/followers")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token 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")
     fun getFollower(
         @Path("username")
         username: String
     ): Call<List<ResponseFollow>>
 
     @GET("users/{username}/following")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token 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")
    fun getFollowing(
         @Path("username")
         username: String

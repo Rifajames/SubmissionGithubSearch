@@ -38,6 +38,8 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun updateUser(detail: DetailResponse?){
+        binding.tvNameDetail.text = detail?.name.toString()
+        binding.tvUserNameDetail.text = detail?.login
         Glide.with(binding.root.context).load(detail?.avatarUrl).into(binding.ivDetailUser)
         binding.tvFollowers.text = detail?.followers.toString()
         binding.tvFollowing.text = detail?.following.toString()
