@@ -1,5 +1,7 @@
 package com.example.submissiongithubsearch.data.response
 
+import com.google.gson.annotations.SerializedName
+
 data class ResponseGithub(
     val totalCount: Int,
     val incompleteResults: Boolean,
@@ -18,7 +20,8 @@ data class ItemsItem(
     val subscriptionsUrl: String,
     val score: Double,
     val receivedEventsUrl: String,
-    val avatar_url: String,
+    @SerializedName("avatar_url")
+    val avatarUrl: String,
     val eventsUrl: String,
     val htmlUrl: String,
     val siteAdmin: Boolean,
