@@ -11,6 +11,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="60dp"
+        android:contentDescription="@string/itemphoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivDetailUser"
-        android:text="Name" />
+        android:text="@string/loading" />
 
     <TextView
         android:id="@+id/tvUserNameDetail"
@@ -34,7 +35,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvNameDetail"
-        android:text="Username" />
+        android:text="@string/loading" />
+
+    <ProgressBar
+        android:id="@+id/detailProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvNameDetail"
+        android:visibility="gone"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint1"
@@ -57,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center"
+                android:textAlignment="center"
                 android:text="1" />
 
             <TextView
@@ -64,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:text="1" />
 
             <TextView
@@ -71,6 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:text="1" />
         </LinearLayout>
 
@@ -94,6 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:text="Following" />
 
             <TextView
@@ -101,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:text="Followers" />
 
             <TextView
@@ -108,6 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textAlignment="center"
                 android:text="Repository" />
         </LinearLayout>
 
@@ -124,9 +141,10 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabDetail"/>
+        app:layout_constraintTop_toBottomOf="@id/tabDetail"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

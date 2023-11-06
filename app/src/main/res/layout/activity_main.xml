@@ -26,7 +26,7 @@
         android:id="@+id/svSearchUser"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:hint="Masukan Kata kunci"
+        android:hint="@string/searchbar_hint"
         app:layout_anchor="@id/svSearchUser"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

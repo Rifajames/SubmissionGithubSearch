@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submissiongithubsearch.data.response.ItemsItem
 import com.example.submissiongithubsearch.databinding.ActivityMainBinding
-import com.example.submissiongithubsearch.ui.adapter.GithubMainAdapter
+import com.example.submissiongithubsearch.ui.adapter.GithubMainAdapters
 import com.example.submissiongithubsearch.ui.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun setGithubData(response: List<ItemsItem>){
-        val adapter = GithubMainAdapter(this)
-        adapter.setItems(response)
+    private fun setGithubData(data: List<ItemsItem>){
+        val adapter = GithubMainAdapters()
+        adapter.submitList(data)
         binding.rvUserList.adapter = adapter
     }
 

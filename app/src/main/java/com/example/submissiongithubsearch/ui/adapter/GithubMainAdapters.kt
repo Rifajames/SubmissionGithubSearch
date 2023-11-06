@@ -10,12 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.submissiongithubsearch.data.response.ItemsItem
 import com.example.submissiongithubsearch.databinding.ItemUserBinding
+import com.example.submissiongithubsearch.ui.view.DetailActivity
 
 class GithubMainAdapters : ListAdapter<ItemsItem, GithubMainAdapters.MyViewHolder>(DIFF_CALLBACK) {
     class MyViewHolder(val binding: ItemUserBinding, val context: Context) : RecyclerView.ViewHolder(binding.root) {
         fun bind(responseGithub: ItemsItem){
             binding.tvUserName.text = responseGithub.login
             Glide.with(context).load(responseGithub.avatar_url).into(binding.avatarImageView)
+            binding.itemView.setOnClickListener{
+                val intentDetail = Intent(binding.root.context, DetailActivity::class.java)
+                intentDetail.putExtra("username", responseGithub.login)
+                binding.root.context.startActivity(intentDetail)
+            }
         }
     }
 

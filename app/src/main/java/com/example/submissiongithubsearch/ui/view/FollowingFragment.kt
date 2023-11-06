@@ -56,7 +56,7 @@ class FollowingFragment : Fragment() {
 
     private fun setGithubData(response: List<ResponseFollow>?){
         val adapter = FollowListAdapter(requireContext())
-        adapter.setFollowList(response)
+        adapter.submitList(response)
         binding.rvFollowing.adapter = adapter
     }
 
@@ -67,7 +67,7 @@ class FollowingFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             FollowersFragment().apply {
                 arguments = Bundle().apply {
                 }

@@ -55,7 +55,7 @@ class FollowersFragment : Fragment() {
 
     private fun setGithubData(response: List<ResponseFollow>?){
         val adapter = FollowListAdapter(requireContext())
-        adapter.setFollowList(response)
+        adapter.submitList(response)
         binding.rvFollowers.adapter = adapter
     }
 

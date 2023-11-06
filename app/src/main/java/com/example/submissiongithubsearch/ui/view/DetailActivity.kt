@@ -2,6 +2,7 @@ package com.example.submissiongithubsearch.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -22,22 +23,28 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val username = intent.getStringExtra("username")
-        val detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailViewModel::class.java]
+        val detailViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[DetailViewModel::class.java]
 
         detailViewModel.findGithubDetail(username!!)
-        detailViewModel.detail.observe(this){
+        detailViewModel.detail.observe(this) {
             updateUser(it)
+        }
+        detailViewModel.isLoading.observe(this) {
+            showLoading(it)
         }
         val pageAdapter = PageAdapter(this, username)
         binding.viewPager.adapter = pageAdapter
         val tabDetails: TabLayout = binding.tabDetail
-        TabLayoutMediator(tabDetails, binding.viewPager){ tabDetail, position ->
+        TabLayoutMediator(tabDetails, binding.viewPager) { tabDetail, position ->
             tabDetail.text = resources.getString(TAB_TITLES[position])
         }.attach()
         supportActionBar?.elevation = 0f
     }
 
-    private fun updateUser(detail: DetailResponse?){
+    private fun updateUser(detail: DetailResponse?) {
         binding.tvNameDetail.text = detail?.name.toString()
         binding.tvUserNameDetail.text = detail?.login
         Glide.with(binding.root.context).load(detail?.avatarUrl).into(binding.ivDetailUser)
@@ -46,7 +53,17 @@ class DetailActivity : AppCompatActivity() {
         binding.tvRepository.text = detail?.publicRepos.toString()
     }
 
-    companion object{
+    private fun showLoading(isLoading: Boolean) {
+        if(isLoading){
+            binding.detailProgressBar.visibility = View.VISIBLE
+            binding.ivDetailUser.visibility = View.GONE
+        } else {
+            binding.detailProgressBar.visibility = View.GONE
+            binding.ivDetailUser.visibility = View.VISIBLE
+        }
+    }
+
+    companion object {
         @StringRes
         private val TAB_TITLES = intArrayOf(
             R.string.tab_text_1,
