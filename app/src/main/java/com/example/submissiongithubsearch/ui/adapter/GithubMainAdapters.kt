@@ -16,7 +16,7 @@ class GithubMainAdapters : ListAdapter<ItemsItem, GithubMainAdapters.MyViewHolde
     class MyViewHolder(val binding: ItemUserBinding, val context: Context) : RecyclerView.ViewHolder(binding.root) {
         fun bind(responseGithub: ItemsItem){
             binding.tvUserName.text = responseGithub.login
-            Glide.with(context).load(responseGithub.avatar_url).into(binding.avatarImageView)
+            Glide.with(context).load(responseGithub.avatarUrl).into(binding.avatarImageView)
             binding.itemView.setOnClickListener{
                 val intentDetail = Intent(binding.root.context, DetailActivity::class.java)
                 intentDetail.putExtra("username", responseGithub.login)
