@@ -7,9 +7,11 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.submissiongithubsearch.R
+import com.example.submissiongithubsearch.data.database.FavoriteUserItem
 import com.example.submissiongithubsearch.data.response.DetailResponse
 import com.example.submissiongithubsearch.databinding.ActivityDetailBinding
 import com.example.submissiongithubsearch.ui.adapter.PageAdapter
+import com.example.submissiongithubsearch.ui.manager.FavoriteManager
 import com.example.submissiongithubsearch.ui.viewmodel.DetailViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -54,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if(isLoading){
+        if (isLoading) {
             binding.detailProgressBar.visibility = View.VISIBLE
             binding.ivDetailUser.visibility = View.GONE
         } else {

@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#E6E6FA</color>
+    <color name="loveButtonFullColor">#FF5733</color>
+    <color name="loveButtonBorderColor">#FF5733</color>
 </resources>

@@ -7,4 +7,7 @@
     <string name="tab_text_2">Following</string>
     <string name="itemphoto">item Photo</string>
     <string name="loading">Loading...</string>
+    <string name="love">Love</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="favorite">Favorite</string>
 </resources>

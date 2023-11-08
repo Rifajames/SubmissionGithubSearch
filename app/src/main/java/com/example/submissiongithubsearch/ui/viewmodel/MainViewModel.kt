@@ -5,15 +5,19 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.submissiongithubsearch.data.response.ItemsItem
 import com.example.submissiongithubsearch.data.response.ResponseGithub
 import com.example.submissiongithubsearch.data.retrofit.ApiConfig
+import com.example.submissiongithubsearch.ui.settings.SettingPreferences
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Query
 
-class MainViewModel: ViewModel() {
+class MainViewModel(private val pref: SettingPreferences): ViewModel() {
     private var _listUsers = MutableLiveData<List<ItemsItem>>()
     val listUsers : LiveData<List<ItemsItem>> = _listUsers
 
@@ -46,5 +50,15 @@ class MainViewModel: ViewModel() {
                 Log.e(TAG, "Error: ${t.message}")
             }
         })
+    }
+
+    fun getThemeSettings(): LiveData<Boolean> {
+        return pref.getThemeSetting().asLiveData()
+    }
+
+    fun saveThemeSetting(isDarkModeActive: Boolean) {
+        viewModelScope.launch {
+            pref.saveThemeSetting(isDarkModeActive)
+        }
     }
 }
